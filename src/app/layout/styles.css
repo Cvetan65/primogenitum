@@ -1,0 +1,48 @@
+body {
+  background-color: bisque;
+}
+
+.ui.fixed.menu {
+  background-image: linear-gradient(
+    135deg,
+    rgb(102, 51, 0) 0%,
+    rgb(163, 122, 81) 59%,
+    rgb(211, 190, 168) 89%
+  );
+}
+
+.ui.main.container {
+  margin-top: 7em;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+}
+
+.div {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../../assets/tunel.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+ padding-top: 50vh;
+  /* background-attachment: fixed;  */
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+}
