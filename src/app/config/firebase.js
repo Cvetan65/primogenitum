@@ -5,7 +5,7 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAeO8zTXaZ39fO-qNUiatUM-f5nZwlNxRY",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "prevoz2021-7f304.firebaseapp.com",
     databaseURL: "https://prevoz2021-7f304-default-rtdb.firebaseio.com",
     projectId: "prevoz2021-7f304",

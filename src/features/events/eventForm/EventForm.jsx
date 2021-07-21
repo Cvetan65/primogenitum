@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Confirm, Header, Segment } from 'semantic-ui-react';
-import { listenToEvents } from '../eventActions';
+import { listenToSelectedEvent } from '../eventActions';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyTextArea from '../../../app/common/form/MyTextArea';
@@ -21,15 +21,13 @@ import {
 import useFirestoreDoc from '../../../app/hooks/useFirestoreDoc';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { toast } from 'react-toastify';
-// import { roundToNearestMinutes } from 'date-fns';
 
 export default function EventForm({ match, history }) {
   const dispatch = useDispatch();
   const [loadingCancel, setLoadingCancel] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const selectedEvent = useSelector((state) =>
-    state.event.events.find((e) => e.id === match.params.id)
-  );
+  const { selectedEvent } = useSelector((state) => state.event);
+
   const { loading, error } = useSelector((state) => state.async);
 
   const initialValues = selectedEvent ?? {
@@ -58,13 +56,13 @@ export default function EventForm({ match, history }) {
     }),
     description: Yup.string().required('Мора да внесете опис на патувањето'),
   });
-  
+
   async function handleCancleToggle(event) {
     setConfirmOpen(false);
     setLoadingCancel(true);
     try {
       await cancelEventToggle(event);
-      setLoadingCancel(false)
+      setLoadingCancel(false);
     } catch (error) {
       setLoadingCancel(true);
       toast.error(error.message);
@@ -72,14 +70,13 @@ export default function EventForm({ match, history }) {
   }
 
   useFirestoreDoc({
-    shouldExecute: !!match.params.id, 
+    shouldExecute: !!match.params.id,
     query: () => listenToEventFromFirestore(match.params.id),
-    data: (event) => dispatch(listenToEvents([event])),
+    data: (event) => dispatch(listenToSelectedEvent(event)),
     deps: [match.params.id, dispatch],
   });
 
-  if (loading)
-    return <LoadingComponent content='Настанот се вчитува...' />;
+  if (loading) return <LoadingComponent content='Настанот се вчитува...' />;
 
   if (error) return <Redirect to='/error' />;
 
@@ -144,15 +141,20 @@ export default function EventForm({ match, history }) {
               placeholder='Опис на патувањето'
               rows={3}
             />
-            {selectedEvent &&
+            {selectedEvent && (
               <Button
-              loading={loadingCancel}
-              type='button'
-              floated='left'
-              color={selectedEvent.isCancelled ? 'green' : 'red'}
-              content={selectedEvent.isCancelled ?  'Reactivate event' : 'Cancel Event' }
-              onClick={() => setConfirmOpen(true)}
-            />}
+                loading={loadingCancel}
+                type='button'
+                floated='left'
+                color={selectedEvent.isCancelled ? 'green' : 'red'}
+                content={
+                  selectedEvent.isCancelled
+                    ? 'Reactivate event'
+                    : 'Cancel Event'
+                }
+                onClick={() => setConfirmOpen(true)}
+              />
+            )}
             <Button
               loading={isSubmitting}
               disabled={!isValid || !dirty || isSubmitting}
@@ -172,11 +174,15 @@ export default function EventForm({ match, history }) {
           </Form>
         )}
       </Formik>
-      <Confirm 
-      content={selectedEvent?.isCancelled ? 'Ова ќе се реактивира! Дали навистина сакаш?' : 'Ова ќе го оневозможи настанот! Дали си сигурен во тоа?'}
-      open={confirmOpen}
-      onCancel={() => setConfirmOpen(false)}
-      onConfirm={() => handleCancleToggle(selectedEvent)}
+      <Confirm
+        content={
+          selectedEvent?.isCancelled
+            ? 'Ова ќе се реактивира! Дали навистина сакаш?'
+            : 'Ова ќе го оневозможи настанот! Дали си сигурен во тоа?'
+        }
+        open={confirmOpen}
+        onCancel={() => setConfirmOpen(false)}
+        onConfirm={() => handleCancleToggle(selectedEvent)}
       />
     </Segment>
   );

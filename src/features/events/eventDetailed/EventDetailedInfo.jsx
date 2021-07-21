@@ -39,7 +39,7 @@ export default function EventDetailedInfo({event}) {
                     <Button 
                         onClick={() => setMapOpenToggle(!mapOpen)}
                         color="teal" size="tiny" 
-                        content={mapOpen ? 'Hide map' : 'Show map'}
+                        content={mapOpen ? 'Сокриј мапа' : 'Прикажи мапа'}
                     />
                 </Grid.Column>
             </Grid>

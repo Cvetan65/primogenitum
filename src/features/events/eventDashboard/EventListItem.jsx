@@ -15,7 +15,7 @@ export default function EventListItem({ event}) {
             <Item.Image size='tiny' circular src={event.hostPhotoURL} />
             <Item.Content>
               <Item.Header content={event.title} />
-              <Item.Description>Hosted by <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link> </Item.Description>
+              <Item.Description>Предложено од <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link> </Item.Description>
               {event.isCancelled && (
                 <Label 
                   style={{top: '-40px'}}
@@ -30,8 +30,8 @@ export default function EventListItem({ event}) {
       </Segment>
       <Segment>
         <span>
-          <Icon name='clock' /> {format(event.date, 'MMMM d, yyyy h:mm a')}
-          <Icon name='marker' /> {event.venue.address}
+          <Icon name='clock' /> {format(event.date, 'MMMM d, yyyy HH:mm' )} 
+          <Icon name='marker' style={{marginLeft: 10}}/> {event.venue.address}
         </span>
       </Segment>
       <Segment secondary>

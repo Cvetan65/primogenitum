@@ -1,14 +1,116 @@
+/**
+*
+* Testing
+*
+**/
 body {
-  background-color: bisque;
+  background-color: black;
 }
 
-.ui.fixed.menu {
-  background-image: linear-gradient(
-    135deg,
-    rgb(102, 51, 0) 0%,
-    rgb(163, 122, 81) 59%,
-    rgb(211, 190, 168) 89%
-  );
+.Navbar {
+  background-image: linear-gradient(135deg, #663300 0%, #a37a51 59%, #d3bea8 89%);
+  width: 100%;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+
+.Navbar__leftSide {
+  -webkit-box-flex: 80%;
+      -ms-flex: 80%;
+          flex: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Navbar__leftSide__links {
+  max-height: 80px;
+  margin-left: 80px;
+}
+
+.Navbar__leftSide__links__nav {
+  color: white;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.Navbar__leftSide__links__nav__img {
+  max-width: 5rem;
+  margin-right: 15px;
+}
+
+.Navbar__leftSide__btn {
+  display: none;
+  margin-left: 25px;
+}
+
+.Navbar__leftSide #hidden {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Navbar__rightSide {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 40px;
+}
+
+@media (max-width: 850px) {
+  .Navbar__leftSide__btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .Navbar__leftSide__links {
+    display: none;
+  }
+  .Navbar__leftSide__links__nav {
+    margin: 10px;
+  }
+  .Navbar__leftSide #hidden {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    height: 230px;
+    max-height: 230px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.796);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    z-index: 20;
+    margin-left: 0px;
+  }
 }
 
 .ui.main.container {
@@ -16,8 +118,12 @@ body {
 }
 
 .masthead {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100vh;
 }
 
@@ -25,16 +131,37 @@ body {
   font-size: 4em;
 }
 
+@media (max-width: 320px) {
+  .masthead h1.ui.header {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .masthead h1.ui.header {
+    font-size: 2em;
+  }
+}
+
 .div {
   height: 100vh;
   width: 100%;
   background-image: url(../../assets/tunel.jpg);
   background-position: center;
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
-  align-items: center;
- padding-top: 50vh;
-  /* background-attachment: fixed;  */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 50vh;
+  display: block;
+}
+
+@media (max-width: 415px) {
+  .div {
+    padding-top: 60px;
+    background-size: fit;
+  }
 }
 
 .react-datepicker-wrapper {
@@ -44,5 +171,255 @@ body {
 .react-calendar {
   width: 100%;
   border: none;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
+
+.Parallax {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Parallax__background1, .Parallax__background2 {
+  width: 1080px;
+  height: 750px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+.Parallax__background1 {
+  background-image: url("../../assets/lp.jpg");
+}
+
+.Parallax__background2 {
+  background-image: url("../../assets/background_02-2.png");
+}
+
+.Parallax__content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+  margin-top: 0px;
+}
+
+.Parallax__content__heading, .Parallax__content__cta {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Parallax__content__heading {
+  background-color: #fcfcfc;
+  width: 40%;
+  padding: 40px;
+}
+
+.Parallax__content__heading__text {
+  margin: 10px 0;
+  font-size: 60px;
+  color: #fff;
+}
+
+.Parallax__content__heading__caption {
+  margin: 50px;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.Parallax__content__cta {
+  background-color: #a2999a23;
+  width: 60%;
+  padding: 40px;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+@media (max-width: 415px) {
+  .Parallax__background1, .Parallax__background2 {
+    width: 100%;
+    height: 750px;
+  }
+  .Parallax__content {
+    width: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    z-index: 1;
+  }
+  .Parallax__content__heading {
+    width: 40%;
+    padding: 8px;
+  }
+  .Parallax__content__heading__text {
+    margin: 10px 0;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .Parallax__content__heading__caption {
+    margin: 50px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .Parallax__content__cta {
+    width: 100%;
+    padding: 0;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Parallax__background1, .Parallax__background2 {
+    width: 100%;
+    height: 750px;
+  }
+  .Parallax__content {
+    width: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    z-index: 1;
+  }
+  .Parallax__content__heading {
+    width: 40%;
+    padding: 8px;
+  }
+  .Parallax__content__heading__text {
+    margin: 10px 0;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .Parallax__content__heading__caption {
+    margin: 50px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .Parallax__content__cta {
+    width: 100%;
+    padding: 0;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .Parallax__background1, .Parallax__background2 {
+    width: 100%;
+    height: 750px;
+  }
+  .Parallax__content {
+    width: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    z-index: 1;
+  }
+  .Parallax__content__heading {
+    width: 40%;
+    padding: 8px;
+  }
+  .Parallax__content__heading__text {
+    margin: 10px 0;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .Parallax__content__heading__caption {
+    margin: 50px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .Parallax__content__cta {
+    width: 100%;
+    padding: 0;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .Parallax__background1, .Parallax__background2 {
+    width: 100%;
+    height: 750px;
+  }
+  .Parallax__content {
+    width: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    z-index: 1;
+  }
+  .Parallax__content__heading {
+    width: 40%;
+    padding: 8px;
+  }
+  .Parallax__content__heading__text {
+    margin: 10px 0;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .Parallax__content__heading__caption {
+    margin: 50px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .Parallax__content__cta {
+    width: 100%;
+    padding: 0;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
