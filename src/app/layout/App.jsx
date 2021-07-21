@@ -6,7 +6,6 @@ import { Route, useLocation } from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
 import EventDetailedPage from '../../features/events/eventDetailed/EventDetailedPage';
 import EventForm from '../../features/events/eventForm/EventForm';
-import Sandbox from '../../features/sandbox/Sandbox';
 import ModalManager from '../common/modals/ModalManager';
 import { ToastContainer } from 'react-toastify';
 import ErrorComponent from '../common/errors/ErrorComponent';
@@ -14,18 +13,21 @@ import AccountPage from '../../features/auth/AccountPage';
 import { useSelector } from 'react-redux';
 import LoadingComponent from './LoadingComponent';
 import ProfilePage from '../../features/profiles/profilePage/ProfilePage';
+import PrivateRoot from './PrivateRoot';
+import About from '../../features/about/About';
 
 export default function App() {
   const { key } = useLocation();
   const { initialized } = useSelector((state) => state.async);
 
-  if (!initialized) return <LoadingComponent content='Loading app...' />
+  if (!initialized) return <LoadingComponent content='Loading app...' />;
 
   return (
     <>
       <ModalManager />
       <ToastContainer position='bottom-right' hideProgressBar />
       <Route exact path='/' component={HomePage} />
+
       <Route
         path={'/(.+)'}
         render={() => (
@@ -33,15 +35,15 @@ export default function App() {
             <NavBar />
             <Container className='main'>
               <Route exact path='/events' component={EventDashboard} />
-              <Route exact path='/sandbox' component={Sandbox} />
+              <Route path='/about' component={About} />
               <Route path='/events/:id' component={EventDetailedPage} />
-              <Route
+              <PrivateRoot
                 path={['/createEvent', '/manage/:id']}
                 component={EventForm}
                 key={key}
               />
-              <Route path='/account' component={AccountPage} />
-              <Route path='/profile/:id' component={ProfilePage} />
+              <PrivateRoot path='/account' component={AccountPage} />
+              <PrivateRoot path='/profile/:id' component={ProfilePage} />
               <Route path='/error' component={ErrorComponent} />
             </Container>
           </>

@@ -13,14 +13,14 @@ export default function EventDetailedSidebar({ attendees, hostUid }) {
         inverted
         color='teal'
       >
-        {attendees.length} {attendees.length > 1 ? 'People' : 'Person'} Going
+        {attendees.length} {attendees.length > 1 ? 'Луѓе' : 'Човек'} патуваат
       </Segment>
       <Segment attached>
         <Item.Group relaxed divided>
           {attendees.map((attendee) => (
             <Item as={Link} to={`/profile/${attendee.id}`} key={attendee.id} style={{ position: 'relative' }}>
               {hostUid === attendee.id && (
-                <Label style={{position: 'absolute'}} color='orange' ribbon='right' content='Host' />
+                <Label style={{position: 'absolute'}} color='orange' ribbon='right' content='Понудувач' />
               )}
               <Item.Image
                 size='tiny'
